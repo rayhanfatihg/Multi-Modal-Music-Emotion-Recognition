@@ -1,11 +1,17 @@
 import numpy as np
 import csv
 
+import os
+
 sample_rate = 32000
 clip_samples = sample_rate * 10     # Audio clips are 10-second
 
 # Load label
-with open('metadata/class_labels_indices.csv', 'r') as f:
+# Use path relative to this file
+current_dir = os.path.dirname(os.path.abspath(__file__))
+metadata_path = os.path.join(current_dir, '../metadata/class_labels_indices.csv')
+
+with open(metadata_path, 'r') as f:
     reader = csv.reader(f, delimiter=',')
     lines = list(reader)
 
